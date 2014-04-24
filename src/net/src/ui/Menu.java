@@ -27,11 +27,11 @@ public class Menu extends UI {
 
     @Override
     public boolean onMouseEvent(MouseEvent event) {
+        boolean res = false;
         for(Component component : components)
-            if(event.x > component.x && event.x < component.x + component.width)
-                if(event.y > component.y && event.y < component.y + component.height)
-                    return component.onMouseEvent(event);
-        return super.onMouseEvent(event);
+            if (component.onMouseEvent(event))
+                res = true;
+        return res || super.onMouseEvent(event);
     }
 
     @Override
@@ -42,6 +42,8 @@ public class Menu extends UI {
                 used = true;
         return super.onKeyEvent(event) || used;
     }
+
+    public void componentFired(Component component) {}
 
     @Override
     public void render(int width, int height, int delta) {

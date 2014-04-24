@@ -17,6 +17,13 @@ public class IntroAnimation extends Menu {
     public IntroAnimation(EchoGame game) {
         super(game);
         words = new String[] {
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
+                "SYSTEM ONLINE",
                 "SYSTEM ONLINE"
         };
         typeSpeed = 25;
@@ -54,13 +61,13 @@ public class IntroAnimation extends Menu {
             time += delta;
             int letters = (int) ((time - line * lineLinger) / typeSpeed);
             for (int i = 0; i < line; i++) {
-                theGame.fontRenderer.drawString(words[i], 0, height - theGame.fontRenderer.lineHeight() * i, 0);
+                fnt.drawString(words[i], 0, height - fnt.lineHeight() * i, 0);
                 letters -= words[i].length();
             }
             if (letters > words[line].length())
                 letters = words[line].length();
             boolean flicker = (int) (time / flickerSpeed) % 2 == 0 && letters == words[line].length();
-            theGame.fontRenderer.drawString(words[line].substring(0, letters) + (flicker? "|" : ""), 0, height - theGame.fontRenderer.lineHeight() * line, 0);
+            fnt.drawString(words[line].substring(0, letters) + (flicker? "|" : ""), 0, height - fnt.lineHeight() * line, 0);
             if (letters == words[line].length())
                 if (timeSinceDone < 0)
                     timeSinceDone = time;
@@ -71,7 +78,8 @@ public class IntroAnimation extends Menu {
                         animationDone = true;
                 }
             GL.color(0x8FFFFF, (float) Math.sin(time / 750D));
-            theGame.fontRenderer.drawCenteredString("[Press any key to continue]", width / 2, 50, 0);
+            fnt.drawCenteredString("[Press any key to continue]", width / 2, 50, 0);
+            super.render(width, height, delta);
         }
     }
 }

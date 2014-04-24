@@ -1,16 +1,19 @@
 package net.src.ui;
 
 import net.src.EchoGame;
+import shade.src.render.FontRenderer;
 
 public class UI {
 
     public EchoGame theGame;
+    public FontRenderer fnt;
     protected UI parentUI;
     private boolean showing;
 
     public UI(UI parent, EchoGame game) {
         parentUI = parent;
         theGame = game;
+        fnt = theGame.fontRenderer;
     }
 
     public void init() {
@@ -33,13 +36,13 @@ public class UI {
     }
 
     public boolean onMouseEvent(MouseEvent event) {
-        if(event.state)
-            if(mousePressed(event))
+        if(event.state) {
+            if (mousePressed(event))
                 return true;
-        else if(event.button >= 0)
-            if(mouseReleased(event))
+        } else if(event.button >= 0) {
+            if (mouseReleased(event))
                 return true;
-        if(Math.abs(event.deltaWheel) > 0)
+        } if(Math.abs(event.deltaWheel) > 0)
             if(mouseScrolled(event))
                 return true;
         return false;

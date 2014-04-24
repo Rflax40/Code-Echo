@@ -45,7 +45,7 @@ public class EchoGame extends WindowController {
             fontRenderer = new FontRenderer(new BitmapFont("font/terminus.fnt"));
             //OTHER
             changeMenu(new IntroAnimation(this));
-            music.queueNextSong(0);
+            //music.queueNextSong(0);
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize properly", e);
         }
