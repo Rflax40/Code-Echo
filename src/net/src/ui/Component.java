@@ -24,6 +24,12 @@ public class Component extends UI {
             getParentMenu().componentFired(this);
     }
 
+    public Component setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
     public static boolean boundCheck(int x, int y, int w, int h, int ex, int ey) {
         return ex > x && ex < x + w && ey > y && ey < y + h;
     }

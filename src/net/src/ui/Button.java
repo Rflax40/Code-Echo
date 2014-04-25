@@ -8,15 +8,15 @@ public class Button extends Component {
     public static final int hoverColor = 0xFFFFFF;
     public static final int clickColor = 0xFF8F8F;
     public static final int color = 0x8FFFFF;
+    public static final int shadowColor = 0x222222;
+    public static final int shadowOffset = 2;
 
     private String text;
     public boolean hover;
     public boolean click;
 
-    public Button(Menu parent, EchoGame game, int id, int x, int y) {
+    public Button(Menu parent, EchoGame game, int id) {
         super(parent, game, id);
-        this.x = x;
-        this.y = y;
     }
 
     public Button setText(String s) {
@@ -57,11 +57,20 @@ public class Button extends Component {
 
     @Override
     public void render(int width, int height, int delta) {
-        if(click)
+        GL.color(shadowColor);
+        fnt.drawString(text, x + shadowOffset, y + fnt.lineHeight() - shadowOffset, 0);
+        int y = this.y;
+        int x = this.x;
+        if(click) {
             GL.color(clickColor);
-        else if(hover)
+            x += shadowOffset;
+            y -= shadowOffset;
+        }
+        else if(hover) {
             GL.color(hoverColor);
-        else
+            x += shadowOffset / 2;
+            y -= shadowOffset / 2;
+        } else
             GL.color(color);
         fnt.drawString(text, x, y + fnt.lineHeight(), 0);
     }
