@@ -10,10 +10,9 @@ public class Button extends Component {
     public static final int color = 0x8FFFFF;
     public static final int shadowColor = 0x222222;
     public static final int shadowOffset = 2;
-
-    private String text;
     public boolean hover;
     public boolean click;
+    private String text;
 
     public Button(Menu parent, EchoGame game, int id) {
         super(parent, game, id);
@@ -27,8 +26,18 @@ public class Button extends Component {
     }
 
     @Override
+    public boolean onMouseEvent(MouseEvent event) {
+        if (boundCheck(x, y, width, height, event.x, event.y)) {
+            hover = true;
+        } else {
+            hover = false;
+        }
+        return super.onMouseEvent(event);
+    }
+
+    @Override
     public boolean mousePressed(MouseEvent event) {
-        if(boundCheck(x, y, width, height, event.x, event.y)) {
+        if (boundCheck(x, y, width, height, event.x, event.y)) {
             click = true;
             fire();
             return true;
@@ -38,7 +47,7 @@ public class Button extends Component {
 
     @Override
     public boolean mouseReleased(MouseEvent event) {
-        if(click) {
+        if (click) {
             click = false;
             fire();
             return true;
@@ -47,32 +56,22 @@ public class Button extends Component {
     }
 
     @Override
-    public boolean onMouseEvent(MouseEvent event) {
-        if(boundCheck(x, y, width, height, event.x, event.y))
-            hover = true;
-        else
-            hover = false;
-        return super.onMouseEvent(event);
-    }
-
-    @Override
     public void render(int width, int height, int delta) {
         GL.color(shadowColor);
         fnt.drawString(text, x + shadowOffset, y + fnt.lineHeight() - shadowOffset, 0);
         int y = this.y;
         int x = this.x;
-        if(click) {
+        if (click) {
             GL.color(clickColor);
             x += shadowOffset;
             y -= shadowOffset;
-        }
-        else if(hover) {
+        } else if (hover) {
             GL.color(hoverColor);
             x += shadowOffset / 2;
             y -= shadowOffset / 2;
-        } else
+        } else {
             GL.color(color);
+        }
         fnt.drawString(text, x, y + fnt.lineHeight(), 0);
     }
-
 }

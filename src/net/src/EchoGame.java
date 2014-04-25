@@ -52,14 +52,6 @@ public class EchoGame extends WindowController {
     }
 
     @Override
-    public void shutdown() {
-        super.shutdown();
-        AL.destroy();
-        Keyboard.destroy();
-        Display.destroy();
-    }
-
-    @Override
     public void render(int delta) {
         int height = window.getHeight();
         int width = window.getWidth();
@@ -68,17 +60,24 @@ public class EchoGame extends WindowController {
     }
 
     @Override
+    public void shutdown() {
+        super.shutdown();
+        AL.destroy();
+        Keyboard.destroy();
+        Display.destroy();
+    }
+
+    @Override
     public void update(int delta) {
         //Handle Input
         Keyboard.poll();
         Mouse.poll();
-        while(Keyboard.next()) {
+        while (Keyboard.next()) {
             KeyEvent event = new KeyEvent(Keyboard.getEventKey(), Keyboard.getEventCharacter(), Keyboard.getEventKeyState());
             currentMenu.onKeyEvent(event);
         }
-        while(Mouse.next()) {
-            MouseEvent event = new MouseEvent(Mouse.getEventButton(), Mouse.getEventButtonState(), Mouse.getEventDWheel(),
-                    Mouse.getEventDX(), Mouse.getEventDY(), Mouse.getEventX(), Mouse.getEventY());
+        while (Mouse.next()) {
+            MouseEvent event = new MouseEvent(Mouse.getEventButton(), Mouse.getEventButtonState(), Mouse.getEventDWheel(), Mouse.getEventDX(), Mouse.getEventDY(), Mouse.getEventX(), Mouse.getEventY());
             currentMenu.onMouseEvent(event);
         }
         currentMenu.update(delta);
@@ -89,9 +88,10 @@ public class EchoGame extends WindowController {
     }
 
     public void changeMenu(Menu menu, boolean resetOld) {
-        if(menu != null) {
-            if(currentMenu != null && resetOld)
+        if (menu != null) {
+            if (currentMenu != null && resetOld) {
                 currentMenu.deInit();
+            }
             currentMenu = menu;
             currentMenu.init();
         }

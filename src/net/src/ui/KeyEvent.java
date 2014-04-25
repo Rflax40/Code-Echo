@@ -15,5 +15,4 @@ public class KeyEvent {
     public String toString() {
         return String.format("'%c' [%d] %s", keychar, keycode, state? "DOWN" : "UP");
     }
-
 }

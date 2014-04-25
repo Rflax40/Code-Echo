@@ -21,7 +21,6 @@ public class MouseEvent {
     }
 
     public String toString() {
-        return String.format("%d %s @(%d, %d)", button, state?"PRESSED":"RELEASED", x, y);
+        return String.format("%d %s @(%d, %d)", button, state? "PRESSED" : "RELEASED", x, y);
     }
-
 }

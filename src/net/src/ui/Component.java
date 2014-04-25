@@ -20,8 +20,9 @@ public class Component extends UI {
     }
 
     public void fire() {
-        if(hasParent())
+        if (hasParent()) {
             getParentMenu().componentFired(this);
+        }
     }
 
     public Component setPosition(int x, int y) {
@@ -33,5 +34,4 @@ public class Component extends UI {
     public static boolean boundCheck(int x, int y, int w, int h, int ex, int ey) {
         return ex > x && ex < x + w && ey > y && ey < y + h;
     }
-
 }

@@ -9,5 +9,4 @@ public class Main {
         EchoGame game = new EchoGame("Code: Echo");
         game.start();
     }
-
 }

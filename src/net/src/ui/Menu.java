@@ -26,35 +26,41 @@ public class Menu extends UI {
     }
 
     @Override
+    public boolean onKeyEvent(KeyEvent event) {
+        boolean used = false;
+        for (Component component : components) {
+            if (component.onKeyEvent(event)) {
+                used = true;
+            }
+        }
+        return super.onKeyEvent(event) || used;
+    }
+
+    @Override
     public boolean onMouseEvent(MouseEvent event) {
         boolean res = false;
-        for(Component component : components)
-            if (component.onMouseEvent(event))
+        for (Component component : components) {
+            if (component.onMouseEvent(event)) {
                 res = true;
+            }
+        }
         return res || super.onMouseEvent(event);
     }
 
     @Override
-    public boolean onKeyEvent(KeyEvent event) {
-        boolean used = false;
-        for(Component component : components)
-            if(component.onKeyEvent(event))
-                used = true;
-        return super.onKeyEvent(event) || used;
+    public void update(int delta) {
+        for (Component component : components) {
+            component.update(delta);
+        }
     }
-
-    public void componentFired(Component component) {}
 
     @Override
     public void render(int width, int height, int delta) {
-        for(Component component : components)
+        for (Component component : components) {
             component.render(width, height, delta);
+        }
     }
 
-    @Override
-    public void update(int delta) {
-        for(Component component : components)
-            component.update(delta);
+    public void componentFired(Component component) {
     }
-
 }
