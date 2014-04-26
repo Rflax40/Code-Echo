@@ -16,7 +16,8 @@ public class MenuIntro extends Menu {
 
     public MenuIntro(EchoGame game) {
         super(game);
-        words = new String[] {"SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE"};
+        //TODO Make this an actual thing
+        words = new String[] {"SYSTEM ONLINE"};
         typeSpeed = 25;
         flickerSpeed = 250;
         lineLinger = 2000;

@@ -8,6 +8,10 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import shade.src.WindowController;
 import shade.src.render.*;
+import shade.src.resource.Resource;
+
+import javax.imageio.ImageIO;
+import java.nio.ByteBuffer;
 
 public class EchoGame extends WindowController {
 
@@ -29,6 +33,10 @@ public class EchoGame extends WindowController {
             fpsCap = 200;
             updateInterval = 10;
             window.resize(1024, 768, false);
+            ByteBuffer[] list = new ByteBuffer[2];
+            list[0] = Texture.getImageData(ImageIO.read(Resource.getResource("img/icon16x.png").getAsStream()));
+            list[1] = Texture.getImageData(ImageIO.read(Resource.getResource("img/icon32x.png").getAsStream()));
+            Display.setIcon(list);
             super.preStartup();
             //INPUT
             Keyboard.create();
