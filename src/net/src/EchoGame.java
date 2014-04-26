@@ -28,7 +28,7 @@ public class EchoGame extends WindowController {
             //WINDOW
             fpsCap = 200;
             updateInterval = 10;
-            window.resize(800, 600, false);
+            window.resize(1024, 768, false);
             super.preStartup();
             //INPUT
             Keyboard.create();
@@ -44,7 +44,7 @@ public class EchoGame extends WindowController {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             fontRenderer = new FontRenderer(new BitmapFont("font/terminus.fnt"));
             //OTHER
-            changeMenu(new IntroAnimation(this));
+            changeMenu(new MenuIntro(this));
             //music.queueNextSong(0);
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize properly", e);

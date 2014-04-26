@@ -3,7 +3,7 @@ package net.src.ui;
 import net.src.EchoGame;
 import shade.src.render.GL;
 
-public class IntroAnimation extends Menu {
+public class MenuIntro extends Menu {
 
     private long time;
     private int typeSpeed;
@@ -14,7 +14,7 @@ public class IntroAnimation extends Menu {
     private String[] words;
     private boolean animationDone;
 
-    public IntroAnimation(EchoGame game) {
+    public MenuIntro(EchoGame game) {
         super(game);
         words = new String[] {"SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE", "SYSTEM ONLINE"};
         typeSpeed = 25;
@@ -37,6 +37,13 @@ public class IntroAnimation extends Menu {
     public boolean mousePressed(MouseEvent event) {
         animationDone = true;
         return true;
+    }
+
+    @Override
+    public void update(int delta) {
+        if (animationDone) {
+            theGame.changeMenu(new MenuMain(theGame));
+        }
     }
 
     @Override
@@ -68,13 +75,6 @@ public class IntroAnimation extends Menu {
             GL.color(0x8FFFFF, (float) Math.sin(time / 750D));
             fnt.drawCenteredString("[Press any key to continue]", width / 2, 50, 0);
             super.render(width, height, delta);
-        }
-    }
-
-    @Override
-    public void update(int delta) {
-        if (animationDone) {
-            ;//TODO Switch to Main Menu
         }
     }
 }

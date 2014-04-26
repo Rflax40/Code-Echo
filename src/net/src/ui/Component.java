@@ -1,7 +1,5 @@
 package net.src.ui;
 
-import net.src.EchoGame;
-
 public class Component extends UI {
 
     public int height;
@@ -10,8 +8,8 @@ public class Component extends UI {
     public int y;
     public int id;
 
-    public Component(Menu parent, EchoGame game, int id) {
-        super(parent, game);
+    public Component(Menu parent, int id) {
+        super(parent, parent.theGame);
         this.id = id;
     }
 

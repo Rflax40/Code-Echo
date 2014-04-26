@@ -1,6 +1,5 @@
 package net.src.ui;
 
-import net.src.EchoGame;
 import shade.src.render.GL;
 
 public class Button extends Component {
@@ -14,8 +13,8 @@ public class Button extends Component {
     public boolean click;
     private String text;
 
-    public Button(Menu parent, EchoGame game, int id) {
-        super(parent, game, id);
+    public Button(Menu parent, int id) {
+        super(parent, id);
     }
 
     public Button setText(String s) {
@@ -27,11 +26,7 @@ public class Button extends Component {
 
     @Override
     public boolean onMouseEvent(MouseEvent event) {
-        if (boundCheck(x, y, width, height, event.x, event.y)) {
-            hover = true;
-        } else {
-            hover = false;
-        }
+        hover = boundCheck(x, y, width, height, event.x, event.y);
         return super.onMouseEvent(event);
     }
 
