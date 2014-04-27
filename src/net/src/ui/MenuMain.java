@@ -3,6 +3,7 @@ package net.src.ui;
 import net.src.EchoGame;
 import shade.src.render.GL;
 import shade.src.render.Texture;
+import shade.src.resource.Resource;
 
 public class MenuMain extends Menu {
 
@@ -16,7 +17,7 @@ public class MenuMain extends Menu {
     public void init() {
         super.init();
         if (logo == null)
-            logo = Texture.getTexture("img/title.png");
+            logo = Texture.getTexture(Resource.getResource("img/title.png"));
         components.add(new ButtonSeries(this, 0, "Exit", "Options", "Play").setPosition(16, 20));
     }
 

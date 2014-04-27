@@ -26,6 +26,8 @@ public class EchoGame extends WindowController {
     @Override
     public void preStartup() {
         try {
+            //CONFIG
+            Config.load();
             //SOUND
             AL.create();
             music = new MusicManager();
