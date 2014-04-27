@@ -21,10 +21,15 @@ public class Config {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        save();
     }
 
     public static void loadDefaults() {
         config = new Elements();
+        save();
+    }
+
+    public static void save() {
         try (PrintStream prnt = new PrintStream(Resource.getResource(configFile).getAsOutputStream())) {
             prnt.print(gson.toJson(config));
             prnt.flush();
