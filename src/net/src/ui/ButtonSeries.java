@@ -21,10 +21,10 @@ public class ButtonSeries extends Component {
     }
 
     @Override
-    public boolean onMouseEvent(MouseEvent event) {
+    public boolean mouseMoved(MouseEvent event) {
         boolean b = false;
         for (Button button : buttons)
-            if (button.onMouseEvent(event))
+            if (button.mouseMoved(event))
                 b = true;
         return b;
     }

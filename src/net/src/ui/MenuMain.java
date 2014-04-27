@@ -1,6 +1,7 @@
 package net.src.ui;
 
 import net.src.EchoGame;
+import net.src.map.MenuMapBuilder;
 import shade.src.render.GL;
 import shade.src.render.Texture;
 import shade.src.resource.Resource;
@@ -18,7 +19,7 @@ public class MenuMain extends Menu {
         super.init();
         if (logo == null)
             logo = Texture.getTexture(Resource.getResource("img/title.png"));
-        components.add(new ButtonSeries(this, 0, "Exit", "Options", "Play").setPosition(16, 20));
+        components.add(new ButtonSeries(this, 0, "Exit", "Options", "Map Builder", "Play").setPosition(16, 20));
     }
 
     @Override
@@ -37,7 +38,10 @@ public class MenuMain extends Menu {
             case 1: //Options
                 //TODO Make option menu
                 break;
-            case 2: //Play
+            case 2: //Map Builder
+                theGame.changeMenu(new MenuMapBuilder(this, theGame));
+                break;
+            case 3: //Play
                 //TODO Make rest of game
                 break;
         }

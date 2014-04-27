@@ -20,8 +20,7 @@ public class Menu extends UI {
     }
 
     @Override
-    public void deInit() {
-        super.deInit();
+    public void init() {
         components.clear();
     }
 

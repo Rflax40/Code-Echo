@@ -8,7 +8,6 @@ public class UI {
     public EchoGame theGame;
     public FontRenderer fnt;
     protected UI parentUI;
-    private boolean showing;
 
     public UI(UI parent, EchoGame game) {
         parentUI = parent;
@@ -17,15 +16,9 @@ public class UI {
     }
 
     public void init() {
-        showing = true;
     }
 
     public void deInit() {
-        showing = false;
-    }
-
-    public boolean isShowing() {
-        return showing;
     }
 
     public boolean onKeyEvent(KeyEvent event) {
@@ -45,12 +38,12 @@ public class UI {
             if (mouseReleased(event)) {
                 return true;
             }
-        }
-        if (Math.abs(event.deltaWheel) > 0) {
+        } else if (Math.abs(event.deltaWheel) > 0) {
             if (mouseScrolled(event)) {
                 return true;
             }
-        }
+        } else if (mouseMoved(event))
+            return true;
         return false;
     }
 
@@ -75,6 +68,10 @@ public class UI {
     }
 
     public boolean mouseScrolled(MouseEvent event) {
+        return false;
+    }
+
+    public boolean mouseMoved(MouseEvent event) {
         return false;
     }
 

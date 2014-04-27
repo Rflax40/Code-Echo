@@ -25,12 +25,6 @@ public class Button extends Component {
     }
 
     @Override
-    public boolean onMouseEvent(MouseEvent event) {
-        hover = boundCheck(x, y, width, height, event.x, event.y);
-        return super.onMouseEvent(event);
-    }
-
-    @Override
     public boolean mousePressed(MouseEvent event) {
         if (boundCheck(x, y, width, height, event.x, event.y)) {
             click = true;
@@ -47,6 +41,12 @@ public class Button extends Component {
             fire();
             return true;
         }
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(MouseEvent event) {
+        hover = boundCheck(x, y, width, height, event.x, event.y);
         return false;
     }
 
