@@ -46,8 +46,8 @@ public class EchoGame extends WindowController {
             GL11.glMatrixMode(GL11.GL_PROJECTION);
             GL11.glLoadIdentity();
             GL11.glOrtho(0, window.getWidth(), 0, window.getHeight(), 1, -1);
-            Texture.preferredMag = GL11.GL_LINEAR;
-            Texture.preferredMin = GL11.GL_LINEAR_MIPMAP_LINEAR;
+            Texture.preferredMag = GL11.GL_NEAREST;
+            Texture.preferredMin = GL11.GL_NEAREST;
             Texture.generateMipMaps = true;
             GL11.glEnable(GL11.GL_TEXTURE_2D);
             GL11.glEnable(GL11.GL_BLEND);
